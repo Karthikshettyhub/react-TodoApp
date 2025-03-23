@@ -1,0 +1,304 @@
+/* Base Styles with Improved Typography */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #202124;
+  image-rendering: pixelated;
+}
+
+h1, h2, h3, input, button {
+  font-family: 'Press Start 2P', system-ui;
+  letter-spacing: -1px;
+}
+
+/* Root Container with Pixel Art Background */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #eff6ff url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h10v10H0V0zm10 10h10v10H10V10z' fill='%2384b5ff' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
+  gap: 20px;
+  position: relative;
+}
+
+/* Pixelated Border Effect */
+#root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    to right,
+    #5b98fc,
+    #5b98fc 10px,
+    #84b5ff 10px,
+    #84b5ff 20px
+  );
+  z-index: 10;
+}
+
+/* App Title */
+.app-title {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-size: 1.8em;
+  color: #202124;
+  text-shadow: 4px 4px 0 #84b5ff;
+}
+
+/* Header Styles with Pixel Art Border */
+header {
+  display: flex;
+  align-items: stretch;
+  border: 4px solid #202124;
+  border-radius: 14px;
+  padding: 6px;
+  background: #d6e6ff;
+  box-shadow: 6px 6px 0 #202124;
+  transition: all 0.2s ease;
+}
+
+header:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 #202124;
+}
+
+header, .main {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 14px;
+}
+
+/* Input Field with Improved Styling */
+header input {
+  flex: 1;
+  border-radius: 10px;
+  outline: none;
+  width: 100%;
+  border: 3px solid #202124;
+  background: white;
+  box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+
+header input:focus {
+  box-shadow: inset 3px 3px 0 rgba(91, 152, 252, 0.3);
+  border-color: #5b98fc;
+}
+
+/* Add Button with Pixel Art Style */
+header button {
+  border-radius: 10px;
+  background: #5b98fc;
+  color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 3px solid #202124;
+  position: relative;
+  font-size: 0.9em;
+}
+
+header button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+  border-radius: 7px;
+}
+
+header button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 #202124;
+  opacity: 1;
+}
+
+header button:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+  background: #4a87eb;
+}
+
+header button, header input {
+  padding: 14px 18px;
+}
+
+/* Main Content Area */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Todo Item Styling */
+.todoItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 12px;
+  background: white;
+  border: 3px solid #202124;
+  box-shadow: 4px 4px 0 #202124;
+  transition: all 0.2s ease;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todoItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 #202124;
+}
+
+.todoItem p {
+  flex: 1;
+  font-size: 1em;
+}
+
+/* Todo Item Action Buttons */
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.actionsContainer button {
+  transition: all 0.2s ease;
+  border: 2px solid #202124;
+  background: #eef4ff;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionsContainer button:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  box-shadow: 2px 2px 0 #202124;
+}
+
+.actionsContainer button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* Color Coding for Buttons */
+.actionsContainer button.edit {
+  background-color: #ffdd57;
+}
+
+.actionsContainer button.complete {
+  background-color: #48c774;
+}
+
+.actionsContainer button.delete {
+  background-color: #ff6b6b;
+}
+
+/* Completed Todo Item */
+.todoItem.completed {
+  opacity: 0.7;
+  background: #f0f0f0;
+}
+
+.todoItem.completed p {
+  text-decoration: line-through;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 30px;
+  border: 3px dashed #84b5ff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { border-color: #84b5ff; }
+  50% { border-color: #5b98fc; }
+  100% { border-color: #84b5ff; }
+}
+
+/* Deletion Animation */
+.todoItem.deleting {
+  animation: slideOut 0.3s forwards;
+}
+
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  header button, header input {
+    font-size: 1.2em;
+  }
+  
+  p {
+    font-size: 1em;
+  }
+  
+  .app-title {
+    font-size: 2.2em;
+  }
+  
+  .todoItem {
+    padding: 18px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d6e6ff;
+  border-left: 2px solid #202124;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5b98fc;
+  border: 2px solid #202124;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a87eb;
+}
